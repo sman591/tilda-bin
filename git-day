@@ -12,7 +12,7 @@ after = day.iso8601
 before = (day + day_in_secs).iso8601
 
 lines = `git log --all --author "#{author}" --after #{after} --before #{before} --format=%s`
-summary = lines.split(/\n/).reverse.join("; ")
+summary = lines.split(/\n/).reverse.map{|line| " - #{line}"}.join("\n")
 
 puts "#{after} - #{before}"
 puts "-----------------------"
